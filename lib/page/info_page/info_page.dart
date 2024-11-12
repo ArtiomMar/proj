@@ -1,7 +1,33 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class InfoPage extends StatelessWidget {
+import 'components/history_list_sapros.dart';
+
+class InfoPage extends StatefulWidget {
   const InfoPage({super.key});
+
+  @override
+  State<InfoPage> createState() => _InfoPageState();
+}
+
+class _InfoPageState extends State<InfoPage> {
+  List historyListSapros = [
+    HistoryListSapros(
+      text: 'Запрос 1',
+      discreption: 'Ответ на запрос 1',
+      dateTime: '${DateTime.now()},',
+    ),
+    HistoryListSapros(
+      text: 'Запрос 2',
+      discreption: 'Ответ на запрос 2',
+      dateTime: '${DateTime.now()},',
+    ),
+    HistoryListSapros(
+      text: 'Запрос 3',
+      discreption: 'Ответ на запрос 3',
+      dateTime: '${DateTime.now()},',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,55 +57,13 @@ class InfoPage extends StatelessWidget {
                 height: 150,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
+                  itemCount: historyListSapros.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding:
-                          const EdgeInsets.only(right: 20, bottom: 10, top: 10),
-                      child: Container(
-                        width: 320,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 115, 115, 115),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'ЗАПРОС',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const Divider(height: 1, color: Colors.black),
-                              const SizedBox(height: 15),
-                              const Expanded(
-                                child: Text(
-                                  'Ответ на запрос',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '${DateTime.now()}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    final historyList = historyListSapros[index];
+                    return HistoryListSapros(
+                      text: historyList.text,
+                      discreption: historyList.discreption,
+                      dateTime: historyList.dateTime,
                     );
                   },
                 ),
