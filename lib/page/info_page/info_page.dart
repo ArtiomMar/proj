@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/page/chat_page/chat_page.dart';
 
 import 'components/history_list_sapros.dart';
 
@@ -72,6 +73,13 @@ class _InfoPageState extends State<InfoPage> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => const ChatPage()));
+        },
+        child: const Icon(Icons.topic),
       ),
     );
   }
